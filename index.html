@@ -7,80 +7,77 @@
   <style>
     body {
       margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #f0f0f0;
     }
     .cat {
+      position: fixed;
+      bottom: 100px;
+      right: 16px;
       width: 60px;
       height: 60px;
       background-image: url('sprite.png');
-      background-size: 480.0px auto;
+      background-size: 480px auto;
       background-repeat: no-repeat;
       background-position: 0px 0px;
       animation: cat-anim 6120ms steps(1) infinite;
-      image-rendering: -webkit-optimize-contrast;
     }
     @keyframes cat-anim {
   0.000% { background-position: 0px 0px; }
   24.510% { background-position: 0px 0px; }
-  24.510% { background-position: -120px 0px; }
+  24.510% { background-position: -60px 0px; }
+  25.490% { background-position: -60px 0px; }
   25.490% { background-position: -120px 0px; }
-  25.490% { background-position: -240px 0px; }
-  26.471% { background-position: -240px 0px; }
-  26.471% { background-position: -360px 0px; }
-  27.451% { background-position: -360px 0px; }
-  27.451% { background-position: -480px 0px; }
-  28.431% { background-position: -480px 0px; }
-  28.431% { background-position: -600px 0px; }
-  29.412% { background-position: -600px 0px; }
-  29.412% { background-position: -720px 0px; }
-  30.392% { background-position: -720px 0px; }
-  30.392% { background-position: -840px 0px; }
-  31.373% { background-position: -840px 0px; }
-  31.373% { background-position: 0px -120px; }
-  32.353% { background-position: 0px -120px; }
-  32.353% { background-position: -120px -120px; }
-  33.333% { background-position: -120px -120px; }
-  33.333% { background-position: -240px -120px; }
-  34.314% { background-position: -240px -120px; }
-  34.314% { background-position: -360px -120px; }
-  35.294% { background-position: -360px -120px; }
-  35.294% { background-position: -480px -120px; }
-  36.275% { background-position: -480px -120px; }
-  36.275% { background-position: -600px -120px; }
-  37.255% { background-position: -600px -120px; }
-  37.255% { background-position: -720px -120px; }
-  38.235% { background-position: -720px -120px; }
-  38.235% { background-position: -840px -120px; }
-  39.216% { background-position: -840px -120px; }
-  39.216% { background-position: 0px -240px; }
-  88.235% { background-position: 0px -240px; }
-  88.235% { background-position: -120px -240px; }
-  89.216% { background-position: -120px -240px; }
-  89.216% { background-position: -240px -240px; }
-  90.196% { background-position: -240px -240px; }
-  90.196% { background-position: -360px -240px; }
-  91.176% { background-position: -360px -240px; }
-  91.176% { background-position: -480px -240px; }
-  92.157% { background-position: -480px -240px; }
-  92.157% { background-position: -600px -240px; }
-  93.137% { background-position: -600px -240px; }
-  93.137% { background-position: -720px -240px; }
-  94.118% { background-position: -720px -240px; }
-  94.118% { background-position: -840px -240px; }
-  95.098% { background-position: -840px -240px; }
-  95.098% { background-position: 0px -360px; }
-  96.078% { background-position: 0px -360px; }
-  96.078% { background-position: -120px -360px; }
-  97.059% { background-position: -120px -360px; }
-  97.059% { background-position: -240px -360px; }
-  98.039% { background-position: -240px -360px; }
-  98.039% { background-position: -360px -360px; }
-  99.020% { background-position: -360px -360px; }
-  99.020% { background-position: -480px -360px; }
+  26.471% { background-position: -120px 0px; }
+  26.471% { background-position: -180px 0px; }
+  27.451% { background-position: -180px 0px; }
+  27.451% { background-position: -240px 0px; }
+  28.431% { background-position: -240px 0px; }
+  28.431% { background-position: -300px 0px; }
+  29.412% { background-position: -300px 0px; }
+  29.412% { background-position: -360px 0px; }
+  30.392% { background-position: -360px 0px; }
+  30.392% { background-position: -420px 0px; }
+  31.373% { background-position: -420px 0px; }
+  31.373% { background-position: 0px -60px; }
+  32.353% { background-position: 0px -60px; }
+  32.353% { background-position: -60px -60px; }
+  33.333% { background-position: -60px -60px; }
+  33.333% { background-position: -120px -60px; }
+  34.314% { background-position: -120px -60px; }
+  34.314% { background-position: -180px -60px; }
+  35.294% { background-position: -180px -60px; }
+  35.294% { background-position: -240px -60px; }
+  36.275% { background-position: -240px -60px; }
+  36.275% { background-position: -300px -60px; }
+  37.255% { background-position: -300px -60px; }
+  37.255% { background-position: -360px -60px; }
+  38.235% { background-position: -360px -60px; }
+  38.235% { background-position: -420px -60px; }
+  39.216% { background-position: -420px -60px; }
+  39.216% { background-position: 0px -120px; }
+  88.235% { background-position: 0px -120px; }
+  88.235% { background-position: -60px -120px; }
+  89.216% { background-position: -60px -120px; }
+  89.216% { background-position: -120px -120px; }
+  90.196% { background-position: -120px -120px; }
+  90.196% { background-position: -180px -120px; }
+  91.176% { background-position: -180px -120px; }
+  91.176% { background-position: -240px -120px; }
+  92.157% { background-position: -240px -120px; }
+  92.157% { background-position: -300px -120px; }
+  93.137% { background-position: -300px -120px; }
+  93.137% { background-position: -360px -120px; }
+  94.118% { background-position: -360px -120px; }
+  94.118% { background-position: -420px -120px; }
+  95.098% { background-position: -420px -120px; }
+  95.098% { background-position: 0px -180px; }
+  96.078% { background-position: 0px -180px; }
+  96.078% { background-position: -60px -180px; }
+  97.059% { background-position: -60px -180px; }
+  97.059% { background-position: -120px -180px; }
+  98.039% { background-position: -120px -180px; }
+  98.039% { background-position: -180px -180px; }
+  99.020% { background-position: -180px -180px; }
+  99.020% { background-position: -240px -180px; }
     }
   </style>
 </head>
