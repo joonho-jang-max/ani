@@ -8,10 +8,22 @@
     body {
       margin: 0;
     }
-    .cat {
+    .cat-wrapper {
       position: fixed;
       bottom: 100px;
       right: 16px;
+      width: 60px;
+      height: 60px;
+    }
+    .cat-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      background: linear-gradient(to bottom, #00dc64, #fff);
+    }
+    .cat {
+      position: absolute;
+      inset: 0;
       width: 60px;
       height: 60px;
       background-image: url('sprite.png');
@@ -82,6 +94,9 @@
   </style>
 </head>
 <body>
-  <div class="cat"></div>
+  <div class="cat-wrapper">
+    <div class="cat-bg"></div>
+    <div class="cat"></div>
+  </div>
 </body>
 </html>
