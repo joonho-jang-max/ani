@@ -15,10 +15,89 @@
       background-repeat: no-repeat;
       overflow: hidden;
     }
-    .cat-wrapper {
+    .float-widget {
       position: absolute;
       bottom: 100px;
       right: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    /* 말풍선 영역 */
+    .bubble-wrap {
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .pill {
+      position: relative;
+      background: #111;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+      height: 28px;
+      border-radius: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0 12px;
+      line-height: 28px;
+      box-sizing: border-box;
+      width: max-content;
+      transition: none;
+    }
+    .pill.ready { transition: width 0.45s ease-in-out; }
+    .pill.shrunk { width: 74px; }
+    .pill-text-full {
+      position: absolute;
+      top: 0; left: 12px;
+      line-height: 28px;
+      white-space: nowrap;
+      opacity: 1;
+      transition: opacity 0.25s ease-in-out;
+    }
+    .pill.shrunk .pill-text-full { opacity: 0; }
+    .pill-text-short {
+      position: absolute;
+      top: 1px; left: 0; right: 0;
+      line-height: 26px;
+      padding-bottom: 2px;
+      white-space: nowrap;
+      text-align: center;
+      opacity: 0;
+      transition: none;
+    }
+    .pill.shrunk .pill-text-short {
+      opacity: 1;
+      transition: opacity 0.25s ease-in-out 0.5s;
+    }
+    .pill-spacer { visibility: hidden; pointer-events: none; }
+
+    /* 레드닷 */
+    .reddot {
+      position: absolute;
+      top: 1.5px; right: 1.5px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #FF2F5D;
+      box-shadow: 0 0 0 1.5px #fff;
+      pointer-events: none;
+    }
+    /* 꼬리 */
+    .tail {
+      position: absolute;
+      bottom: -5px; right: 28px;
+      width: 10px; height: 7px;
+      overflow: hidden;
+    }
+    .tail svg {
+      position: absolute;
+      top: -7px; left: 0;
+      display: block;
+    }
+
+    .cat-wrapper {
+      position: relative;
       width: 60px;
       height: 60px;
     }
@@ -91,10 +170,43 @@
 </head>
 <body>
   <div class="screen">
-    <div class="cat-wrapper">
-      <div class="cat-bg"></div>
-      <div class="cat"></div>
+    <div class="float-widget">
+
+      <div class="bubble-wrap">
+        <div class="pill" id="pill">
+          <span class="pill-text-full">오늘 쿠키미션 확인해보세요!</span>
+          <span class="pill-text-short">리워드 미션</span>
+          <span class="pill-spacer">오늘 쿠키미션 확인해보세요!</span>
+        </div>
+        <div class="reddot"></div>
+        <div class="tail">
+          <svg width="10" height="14" viewBox="0 0 10 14">
+            <path d="M5 1 Q5.8 0 10 7 Q5.8 14 5 13 Q4.2 14 0 7 Q4.2 0 5 1 Z" fill="#111"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="cat-wrapper">
+        <div class="cat-bg"></div>
+        <div class="cat"></div>
+      </div>
     </div>
   </div>
+
+  <script>
+    const pill = document.getElementById('pill');
+    const fullWidth = pill.offsetWidth;
+    pill.style.width = fullWidth + 'px';
+    requestAnimationFrame(() => requestAnimationFrame(() => pill.classList.add('ready')));
+
+    const screen = document.querySelector('.screen');
+    let shrunk = false;
+    screen.addEventListener('scroll', () => {
+      if (!shrunk && screen.scrollTop >= 10) {
+        shrunk = true;
+        pill.classList.add('shrunk');
+      }
+    }, { passive: true });
+  </script>
 </body>
 </html>
