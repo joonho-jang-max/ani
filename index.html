@@ -7,9 +7,21 @@
   <style>
     body {
       margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+    }
+    .screen {
+      position: relative;
+      width: 402px;
+      height: 874px;
+      background-image: url('bg.png');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      overflow: hidden;
     }
     .cat-wrapper {
-      position: fixed;
+      position: absolute;
       bottom: 100px;
       right: 16px;
       width: 60px;
@@ -94,9 +106,11 @@
   </style>
 </head>
 <body>
-  <div class="cat-wrapper">
-    <div class="cat-bg"></div>
-    <div class="cat"></div>
+  <div class="screen">
+    <div class="cat-wrapper">
+      <div class="cat-bg"></div>
+      <div class="cat"></div>
+    </div>
   </div>
 </body>
 </html>
