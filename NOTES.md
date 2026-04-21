@@ -70,16 +70,31 @@
 
 ### AE 작업 필요 (유저가 할 일)
 
-유저가 After Effects에서 **Track Matte** 방식으로 초록 Shape Layer를 고양이 마스크로 사용 중. 단순히 Shape Layer 눈알 끄면 고양이도 사라짐.
+유저 AE 셋업: Shape Layer 1 (초록 그라데이션 사각형) + 위에 고양이 PNG Sequence 4개. **Track Matte 컬럼은 "No Mat"로 표시**되지만, 고양이 레이어들이 Shape Layer의 alpha에 종속돼있음 → **"Preserve Underlying Transparency" (T 토글)** 로 연결된 구조로 추정됨.
 
-**해결책:**
-1. 모든 레이어 선택 → 우클릭 → **Pre-compose** (move all attributes into new comp)
-2. Pre-comp 안으로 진입
-3. `Shape Layer 1` → Contents → Rectangle 1 → Gradient Fill 1 → **Opacity 0%** 로 설정
-   - 레이어 가시성(눈알)이 아니라 **Fill의 Opacity**를 내려야 함
-   - 이래야 alpha 채널은 유지되면서 초록 색만 사라져서 track matte는 정상 동작
-4. Render Queue → PNG Sequence, RGB+Alpha, Millions of Colors+
-5. 만약 안 되면 (Luma matte일 경우) → 해당 고양이 레이어의 Track Matte 설정을 Alpha Matte로 변경
+단순히 Shape Layer 눈알 끄면 고양이도 사라지고, Gradient Fill Opacity를 낮추면 고양이까지 반투명해짐 (이것도 T 토글 증거).
+
+**시도한 실패 케이스:**
+- Fill Opacity 0% → 고양이까지 투명해짐 (실패)
+- Shape Layer 눈알 off → 고양이 사라짐 (실패)
+
+**진짜 해결책: Set Matte 이펙트 쓰기**
+1. Gradient Fill Opacity는 100% 복구
+2. 고양이 레이어 4개 전부 선택
+3. Effect → Channel → **Set Matte** 적용
+4. Set Matte 설정:
+   - Take Matte From Layer: `Shape Layer 1`
+   - Use For Matte: `Alpha Channel` (안 되면 Alpha Channel Inverted 시도)
+   - Invert Matte: off
+5. 고양이 레이어들의 **T 토글 (Preserve Underlying Transparency) 끄기** — Mode 컬럼 옆에 있는 체크박스
+6. 이제 Shape Layer 1의 **눈알 off** 해도 고양이는 마스킹된 상태로 남음
+7. Render Queue → PNG Sequence, RGB+Alpha, Millions of Colors+
+
+**대안: 정규 Track Matte 연결**
+1. 모든 T 토글 끄기
+2. 각 고양이 레이어의 Track Matte 드롭다운에서 Shape Layer 1 선택 + Alpha 모드
+3. Shape Layer 자동 숨김됨
+4. Render 동일
 
 ### 그 다음 Claude가 할 작업
 
