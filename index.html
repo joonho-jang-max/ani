@@ -11,25 +11,45 @@
       width: 402px;
       height: 874px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+    .bg-strip {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 378px;
+      object-fit: cover;
+    }
+    .to-layer {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 375px;
+      height: 143px;
+      display: block;
+      z-index: 2;
     }
     .bb {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 130px;
       height: 190px;
       display: block;
+      z-index: 3;
     }
     .float-widget {
       position: absolute;
-      bottom: 100px;
+      top: 160px;
       right: 16px;
+      z-index: 4;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
     }
 
-    /* 말풍선 영역 */
+    /* 말풍선 */
     .bubble-wrap {
       position: relative;
       margin-bottom: 6px;
@@ -77,30 +97,15 @@
       transition: opacity 0.25s ease-in-out 0.5s;
     }
     .pill-spacer { visibility: hidden; pointer-events: none; }
-
-    /* 레드닷 */
-    .reddot {
-      position: absolute;
-      top: 1.5px; right: 1.5px;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #FF2F5D;
-      box-shadow: 0 0 0 1.5px #fff;
-      pointer-events: none;
-    }
-    /* 꼬리 */
     .tail {
       position: absolute;
       bottom: -5px; right: 28px;
       width: 10px; height: 7px;
       overflow: hidden;
     }
-    .tail svg {
-      position: absolute;
-      top: -7px; left: 0;
-      display: block;
-    }
+    .tail svg { position: absolute; top: -7px; left: 0; display: block; }
 
+    /* 고양이 */
     .cat-wrapper {
       position: relative;
       width: 60px;
@@ -112,89 +117,35 @@
       border-radius: 26px;
       background: linear-gradient(to bottom, #00dc64, #fff);
     }
-    .cat {
+    .cat-img {
       position: absolute;
       inset: 0;
-      background-image: url('sprite.png');
-      background-size: 480px auto;
-      background-repeat: no-repeat;
-      animation: cat-anim 5880ms steps(1) infinite;
-    }
-    @keyframes cat-anim {
-  0.000% { background-position: 0px 0px; }
-  25.510% { background-position: 0px 0px; }
-  25.510% { background-position: -60px 0px; }
-  26.531% { background-position: -60px 0px; }
-  26.531% { background-position: -120px 0px; }
-  27.551% { background-position: -120px 0px; }
-  27.551% { background-position: -180px 0px; }
-  28.571% { background-position: -180px 0px; }
-  28.571% { background-position: -240px 0px; }
-  29.592% { background-position: -240px 0px; }
-  29.592% { background-position: -300px 0px; }
-  30.612% { background-position: -300px 0px; }
-  30.612% { background-position: -360px 0px; }
-  31.633% { background-position: -360px 0px; }
-  31.633% { background-position: -420px 0px; }
-  32.653% { background-position: -420px 0px; }
-  32.653% { background-position: 0px -60px; }
-  33.673% { background-position: 0px -60px; }
-  33.673% { background-position: -60px -60px; }
-  34.694% { background-position: -60px -60px; }
-  34.694% { background-position: -120px -60px; }
-  35.714% { background-position: -120px -60px; }
-  35.714% { background-position: -180px -60px; }
-  36.735% { background-position: -180px -60px; }
-  36.735% { background-position: -240px -60px; }
-  87.755% { background-position: -240px -60px; }
-  87.755% { background-position: -300px -60px; }
-  88.776% { background-position: -300px -60px; }
-  88.776% { background-position: -360px -60px; }
-  89.796% { background-position: -360px -60px; }
-  89.796% { background-position: -420px -60px; }
-  90.816% { background-position: -420px -60px; }
-  90.816% { background-position: 0px -120px; }
-  91.837% { background-position: 0px -120px; }
-  91.837% { background-position: -60px -120px; }
-  92.857% { background-position: -60px -120px; }
-  92.857% { background-position: -120px -120px; }
-  93.878% { background-position: -120px -120px; }
-  93.878% { background-position: -180px -120px; }
-  94.898% { background-position: -180px -120px; }
-  94.898% { background-position: -240px -120px; }
-  95.918% { background-position: -240px -120px; }
-  95.918% { background-position: -300px -120px; }
-  96.939% { background-position: -300px -120px; }
-  96.939% { background-position: -360px -120px; }
-  97.959% { background-position: -360px -120px; }
-  97.959% { background-position: -420px -120px; }
-  98.980% { background-position: -420px -120px; }
-  98.980% { background-position: 0px -180px; }
+      width: 60px;
+      height: 60px;
     }
   </style>
 </head>
 <body>
   <div class="screen">
+    <img class="bg-strip" src="ddd.png" alt=""/>
+    <img class="to-layer" src="to.png" alt=""/>
     <img class="bb" src="bb.apng" alt=""/>
     <div class="float-widget">
-
       <div class="bubble-wrap">
         <div class="pill" id="pill">
           <span class="pill-text-full">오늘 쿠키미션 확인해보세요!</span>
           <span class="pill-text-short">리워드 미션</span>
           <span class="pill-spacer">오늘 쿠키미션 확인해보세요!</span>
         </div>
-
         <div class="tail">
           <svg width="10" height="14" viewBox="0 0 10 14">
             <path d="M5 1 Q5.8 0 10 7 Q5.8 14 5 13 Q4.2 14 0 7 Q4.2 0 5 1 Z" fill="#111"/>
           </svg>
         </div>
       </div>
-
       <div class="cat-wrapper">
         <div class="cat-bg"></div>
-        <div class="cat"></div>
+        <img class="cat-img" src="cat.apng" alt=""/>
       </div>
     </div>
   </div>
