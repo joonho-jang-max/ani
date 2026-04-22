@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>cat</title>
   <style>
-    body { margin: 0; background: #000; display: flex; justify-content: center; }
+    body { margin: 0; background: #111; display: flex; justify-content: center; }
     .screen {
       position: relative;
       width: 402px;
       height: 874px;
-      background-image: url('bg.png');
-      background-size: 100% auto;
-      background-repeat: no-repeat;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bb {
+      width: 130px;
+      height: 190px;
+      display: block;
     }
     .float-widget {
       position: absolute;
@@ -170,6 +175,7 @@
 </head>
 <body>
   <div class="screen">
+    <img class="bb" src="bb.apng" alt=""/>
     <div class="float-widget">
 
       <div class="bubble-wrap">
